@@ -820,7 +820,7 @@ def latest(module, items, repoq, yum_basecmd, conf_file, en_repos, dis_repos):
         update_all = True
 
     # run check-update to see if we have packages pending
-    rc, out, err = module.run_command(yum_basecmd + ['check-update'])
+    rc, out, err = module.run_command(yum_basecmd + ['-q'] + ['check-update'])
     if rc == 0 and update_all:
         res['results'].append('Nothing to do here, all packages are up to date')
         return res
